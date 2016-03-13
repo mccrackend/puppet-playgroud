@@ -16,12 +16,12 @@ task :validate do
   end
 end
 
-desc "Test all rspec files"
-task :test => ["validate"] do
-  Dir['spec/**/*.rb','lib/**/*.rb'].each do |ruby_file|
-    sh "rspec #{ruby_file}"
-  end
-end
+#desc "Test all rspec files"
+#task :test => ["validate"] do
+#  Dir['spec/**/*.rb','lib/**/*.rb'].each do |ruby_file|
+#    sh "rspec #{ruby_file}"
+#  end
+#end
 
 desc "Default rake runs tests"
-task :default => ["test"]
+task :default => ["validate", "spec"]
