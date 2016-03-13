@@ -15,3 +15,13 @@ task :validate do
     sh "erb -P -x -T '-' #{template} | ruby -c"
   end
 end
+
+desc "Test all rspec files"
+task :test => ["validate"] do
+  Dir['spec/**/*.rb','lib/**/*.rb'].each do |ruby_file|
+    sh "rspec #{ruby_file}"
+  end
+end
+
+desc "Default rake runs tests"
+task :default => ["test"]
